@@ -73,7 +73,11 @@ class MainActivity : ComponentActivity() {
                         TextFieldComponent("Enter your password")
                         Spacer(modifier = Modifier.height(1.dp))
                         CheckboxComponent(value = "I have Agreed to the Terms of Service and Privacy Policy")
-                        Button(onClick = { /*TODO*/ },
+                        Button(onClick = {
+                            val intent = Intent(this@MainActivity,
+                                ScrollActivity::class.java)
+                            startActivity(intent)
+                        },
                             colors = ButtonDefaults.buttonColors(androidx.compose.ui.graphics.Color.Black),
                             modifier = Modifier
                                 .fillMaxWidth()
@@ -93,6 +97,7 @@ class MainActivity : ComponentActivity() {
                             Text(modifier = Modifier.padding(5.dp),text = "LOG IN HERE")
                         }
                         Spacer(modifier = Modifier.height(2.dp))
+
                     }
                 }
 

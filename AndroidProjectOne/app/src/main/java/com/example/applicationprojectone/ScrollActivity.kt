@@ -7,20 +7,35 @@ import androidx.activity.compose.setContent
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.aspectRatio
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.wrapContentHeight
+import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyRow
+import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.Button
+import androidx.compose.material3.Card
+import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.modifier.modifierLocalConsumer
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import com.example.applicationprojectone.ui.theme.ApplicationProjectOneTheme
 
 class ScrollActivity : ComponentActivity() {
@@ -33,19 +48,41 @@ class ScrollActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    ListScreen()
-                    Button(onClick = {
-                                        val intent = Intent(this@ScrollActivity, LoginActivity::class.java)
-                                            startActivity(intent)
-                                    },
-                        modifier = Modifier
-                            .fillMaxWidth()
+                    val employees = listOf(
+                        "Mutheu", "Veronica",
+                        "Njogu", "Dennis",
+                        "John", "Paul",
+                        "Vincent", "Ann",
+                        "Joseph", "King",
+                        "Indiana", "Sasha",
+                        "Malia", "Scholes",
+                        "Andrew"
                     )
-                    {
-                        Text(modifier = Modifier
-                            .padding(15.dp),
-                            text = "LOG IN HERE")
-                    }
+                    ListScreen(modifier = Modifier, employees)
+                    val courses = listOf(
+                        "Marketing",
+                        "Full Stack Software Development",
+                        "CyberSecurity",
+                        "Data Science",
+                        "Java",
+                        "Python",
+                        "USSD",
+
+                    )
+                    ListOfCourses(modifier = Modifier, courses)
+
+//                    Button(onClick = {
+//                        val intent = Intent(this@ScrollActivity,
+//                            LoginActivity::class.java)
+//                        startActivity(intent)
+//                        },
+//                        modifier = Modifier
+//                            .fillMaxWidth()
+//                    ) {
+//                        Text(modifier = Modifier
+//                            .padding(15.dp),
+//                            text = "LOG IN HERE")
+//                    }
                 }
             }
         }
@@ -53,7 +90,7 @@ class ScrollActivity : ComponentActivity() {
 }
 
 @Composable
-fun ListScreen(){
+fun ListScreen(modifier: Modifier = Modifier, employees: List<String>){
     Box(modifier = Modifier
         .fillMaxSize()){
         Image(painter = painterResource(id = R.drawable.background),
@@ -62,18 +99,120 @@ fun ListScreen(){
         modifier = Modifier
             .matchParentSize())
     }
-    Column {
-        LazyRow {
-            items(count = 100){
+    Column() {
+        LazyRow(contentPadding = PaddingValues(10.dp)) {
+            items(items = employees){
                 item->
-                Text(text = "$item")
+                RowCard(modifier = Modifier, name = item)
             }
+
+        }
+        LazyColumn(contentPadding = PaddingValues(10.dp)) {
+            items(items = employees){
+                    item->
+                ColumnCard(modifier = Modifier, name = item)
+            }
+
+        }
+
+    }
+}
+
+@Composable
+fun ListOfCourses(modifier: Modifier = Modifier, courses: List<String> ){
+    Column {
+        LazyColumn(contentPadding = PaddingValues(10.dp)) {
+
+            items(items = courses){
+                    item->
+                ColumnCard2(modifier = Modifier, name = item)
+            }
+
         }
     }
 }
 
-@Preview(showBackground = true, showSystemUi = true)
+
+//@PreviewParameter
+//@Composable
+//fun ListScreenPreview(modifier: Modifier = Modifier, employees: List<String>){
+//    ListScreen(modifier = Modifier, employees)
+//}
+
 @Composable
-fun ListScreenPreview(){
-    ListScreen()
+fun RowCard(modifier: Modifier, name :String){
+    Card(
+        modifier = Modifier
+            .padding(10.dp)
+            .fillMaxWidth()
+            .height(100.dp)
+            .aspectRatio(1.5f),
+        colors = CardDefaults.cardColors(
+            containerColor = Color.White
+        ),
+        elevation = CardDefaults.cardElevation(10.dp)
+    ) {
+        Box(
+            modifier = Modifier
+                .padding(10.dp)
+                .fillMaxSize(),
+            contentAlignment = Alignment.Center
+        ) {
+            Text(text = name,
+                fontSize = 24.sp,
+                fontWeight = FontWeight.Bold)
+        }
+    }
+}
+
+@Composable
+fun ColumnCard(modifier: Modifier, name: String){
+    Card(
+        modifier = Modifier
+            .padding(10.dp)
+            .fillMaxWidth()
+            .wrapContentHeight()
+            .aspectRatio(1.5f),
+        colors = CardDefaults.cardColors(
+            containerColor = Color.White
+        ),
+        elevation = CardDefaults.cardElevation(10.dp)
+    ) {
+        Box(
+            modifier = Modifier
+                .padding(10.dp)
+                .fillMaxSize(),
+            contentAlignment = Alignment.Center
+        ) {
+            Text(text = name,
+                fontSize = 24.sp,
+                fontWeight = FontWeight.Bold)
+        }
+    }
+}
+
+@Composable
+fun ColumnCard2(modifier: Modifier, name: String){
+    Card(
+        modifier = Modifier
+            .padding(10.dp)
+            .fillMaxWidth()
+            .wrapContentHeight()
+            .aspectRatio(1.5f),
+        colors = CardDefaults.cardColors(
+            containerColor = Color.White
+        ),
+        elevation = CardDefaults.cardElevation(10.dp)
+    ) {
+        Box(
+            modifier = Modifier
+                .padding(10.dp)
+                .fillMaxSize(),
+            contentAlignment = Alignment.Center
+        ) {
+            Text(text = name,
+                fontSize = 24.sp,
+                fontWeight = FontWeight.Bold)
+        }
+    }
 }
