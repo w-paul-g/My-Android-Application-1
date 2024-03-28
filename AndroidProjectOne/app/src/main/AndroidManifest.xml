@@ -13,6 +13,22 @@
         android:theme="@style/Theme.ApplicationProjectOne"
         tools:targetApi="31">
         <activity
+            android:name=".ShortcutsSection1"
+            android:exported="true"
+            android:label="@string/title_activity_shortcuts_section1"
+            android:theme="@style/Theme.ApplicationProjectOne">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".CardActivity"
+            android:exported="false"
+            android:label="@string/title_activity_card"
+            android:theme="@style/Theme.ApplicationProjectOne" />
+        <activity
             android:name=".ScrollActivity"
             android:exported="false"
             android:label="@string/title_activity_scroll"
