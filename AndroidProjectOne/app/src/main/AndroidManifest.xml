@@ -13,6 +13,11 @@
         android:theme="@style/Theme.ApplicationProjectOne"
         tools:targetApi="31">
         <activity
+            android:name=".TopBarAppActivity"
+            android:exported="false"
+            android:label="@string/title_activity_top_bar_app"
+            android:theme="@style/Theme.ApplicationProjectOne" />
+        <activity
             android:name=".ShortcutsSection1"
             android:exported="true"
             android:label="@string/title_activity_shortcuts_section1"

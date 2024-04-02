@@ -5,4 +5,5 @@
     <string name="title_activity_scroll">ScrollActivity</string>
     <string name="title_activity_card">CardActivity</string>
     <string name="title_activity_shortcuts_section1">ShortcutsSection1</string>
+    <string name="title_activity_top_bar_app">TopBarAppActivity</string>
 </resources>

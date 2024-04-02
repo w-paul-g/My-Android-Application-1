@@ -5,6 +5,7 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -33,6 +34,10 @@ class ShortcutsSection1 : ComponentActivity() {
                     color = MaterialTheme.colorScheme.background
                 ) {
                     Column {
+                        Row{
+                            TopBar()
+                        }
+
                         Spacer(modifier = Modifier.height(1.dp))
                         Button(
                             onClick = {
@@ -90,6 +95,17 @@ class ShortcutsSection1 : ComponentActivity() {
                             Text(modifier = Modifier.padding(10.dp),text = "REGISTER HERE")
                         }
                         Spacer(modifier = Modifier.height(1.dp))
+                        Button(onClick = {
+                            val intent = Intent(this@ShortcutsSection1, TopBarAppActivity::class.java)
+                            startActivity(intent)
+                        },
+                            colors = ButtonDefaults.buttonColors(Color.Gray),
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .padding(16.dp))
+                             {
+                                 Text(text = "TOP BAR" )
+                        }
                     }
                 }
             }
