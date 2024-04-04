@@ -1,11 +1,12 @@
 <resources>
-    <string name="app_name">ApplicationProjectOne</string>
-    <string name="title_activity_login">LoginActivity</string>
-    <string name="title_activity_box">BoxActivity</string>
-    <string name="title_activity_scroll">ScrollActivity</string>
-    <string name="title_activity_card">CardActivity</string>
-    <string name="title_activity_shortcuts_section1">ShortcutsSection1</string>
-    <string name="title_activity_top_bar_app">TopBarAppActivity</string>
-    <string name="title_activity_indicaators">Indicaators</string>
+    <string name="app_name">AndroidProjectOne</string>
+    <string name="title_activity_indicator">Indicator</string>
     <string name="title_activity_indicators">Indicators</string>
+    <string name="title_activity_scroll">ScrollActivity</string>
+    <string name="title_activity_login">LoginActivity</string>
+    <string name="title_activity_top_bar">TopBarActivity</string>
+    <string name="title_activity_box">BoxActivity</string>
+    <string name="title_activity_card">CardActivity</string>
+    <string name="title_activity_shortcut_section_one">ShortcutSectionOne</string>
+    <string name="title_activity_bottom_app">BottomAppActivity</string>
 </resources>
