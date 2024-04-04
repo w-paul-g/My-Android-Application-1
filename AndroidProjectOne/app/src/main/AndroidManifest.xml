@@ -13,6 +13,16 @@
         android:theme="@style/Theme.ApplicationProjectOne"
         tools:targetApi="31">
         <activity
+            android:name=".Indicators"
+            android:exported="false"
+            android:label="@string/title_activity_indicators"
+            android:theme="@style/Theme.ApplicationProjectOne" />
+        <activity
+            android:name=".Indicaators"
+            android:exported="false"
+            android:label="@string/title_activity_indicaators"
+            android:theme="@style/Theme.ApplicationProjectOne" />
+        <activity
             android:name=".TopBarAppActivity"
             android:exported="false"
             android:label="@string/title_activity_top_bar_app"
