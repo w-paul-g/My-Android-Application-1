@@ -60,8 +60,9 @@ fun WelcomePagePreview(){
 @Composable()
 fun WelcomePage() {
     BackgroundImage()
-    Box(modifier = Modifier.fillMaxSize()){
-        Column {
+    Box(modifier = Modifier.fillMaxSize(),
+        contentAlignment = Alignment.Center){
+        Column(modifier = Modifier) {
             Spacer(modifier = Modifier.fillMaxHeight(0.05f))
             Row(modifier = Modifier
                 .fillMaxWidth()
@@ -69,10 +70,7 @@ fun WelcomePage() {
                 TravelezyLogo()
             }
             Spacer(modifier = Modifier.fillMaxHeight(0.6f))
-            Box(modifier = Modifier.fillMaxWidth(),
-                contentAlignment = Alignment.Center) {
-                WelcomeBox()
-            }
+            WelcomeBox()
             Spacer(modifier = Modifier.fillMaxHeight(0.1f))
         }
     }
@@ -102,19 +100,25 @@ fun TravelezyLogo(){
 
 @Composable
 fun WelcomeBox(){
-    Box(modifier = Modifier
-        .width(320.dp)
-        .fillMaxHeight(0.9f),
-        contentAlignment = Alignment.Center){
-        Column(modifier = Modifier
+    Box(modifier = Modifier.fillMaxWidth(),
+        contentAlignment = Alignment.Center) {
+        Box(modifier = Modifier
+            .width(320.dp)
+            .padding(1.dp)
+            .fillMaxHeight(0.9f)
             .background(Color(0xFF000000))
-            .clip(shape = RoundedCornerShape(10.dp))){
-            IntroText()
-            Row(modifier = Modifier.fillMaxWidth()) {
-                SignUpButton(modifier = Modifier)
-            }
-            Row(modifier = Modifier.fillMaxWidth()) {
-                SignInLink(signInOption = "Already have an account?")
+            .clip(shape = RoundedCornerShape(100.dp)),
+            contentAlignment = Alignment.Center){
+            Column(modifier = Modifier
+                ,
+            ){
+                IntroText()
+                Row(modifier = Modifier.fillMaxWidth()) {
+                    SignUpButton(modifier = Modifier)
+                }
+                Row(modifier = Modifier.fillMaxWidth()) {
+                    SignInLink(signInOption = "Already have an account?")
+                }
             }
         }
     }
