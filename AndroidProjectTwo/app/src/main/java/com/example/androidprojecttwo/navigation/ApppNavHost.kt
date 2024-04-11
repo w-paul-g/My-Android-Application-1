@@ -12,6 +12,7 @@ import androidx.navigation.compose.rememberNavController
 import com.example.androidprojecttwo.ui.theme.screens.about.AboutScreen
 import com.example.androidprojecttwo.ui.theme.screens.home.HomeScreen
 import com.example.androidprojecttwo.ui.theme.screens.login.LoginScreen
+import com.example.androidprojecttwo.ui.theme.screens.register.RegisterScreen
 
 
 @Composable
@@ -29,6 +30,9 @@ fun AppNavHost(modifier :Modifier = Modifier,
         }
         composable(ROUTE_LOGIN){
             LoginScreen(navController)
+        }
+        composable(ROUTE_REGISTER){
+            RegisterScreen(navController)
         }
     }
 }
