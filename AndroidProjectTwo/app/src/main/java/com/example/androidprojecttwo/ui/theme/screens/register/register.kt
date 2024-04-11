@@ -1,5 +1,6 @@
 package com.example.androidprojecttwo.ui.theme.screens.register
 
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -39,7 +40,9 @@ fun RegisterForm(navController: NavController){
         .fillMaxWidth(),
         contentAlignment = Alignment.Center){
         Column(modifier = Modifier
-            .width(320.dp)) {
+            .width(320.dp),
+            verticalArrangement = Arrangement.Center,
+            horizontalAlignment = Alignment.CenterHorizontally) {
             Row {
                 //Text
                 RegisterScreenText(registerScreenText = "Welcome",
