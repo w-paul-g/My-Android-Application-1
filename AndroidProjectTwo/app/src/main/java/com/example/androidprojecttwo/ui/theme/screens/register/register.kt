@@ -7,6 +7,8 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Button
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
@@ -28,74 +30,88 @@ import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.example.androidprojecttwo.navigation.ROUTE_LOGIN
 
-
 @Composable
 fun RegisterScreen(navController: NavController){
-    RegisterForm(navController = rememberNavController())
-}
-
-@Composable
-fun RegisterForm(navController: NavController){
     Box(modifier = Modifier
-        .fillMaxWidth(),
+        .fillMaxWidth()
+        .verticalScroll(rememberScrollState()),
         contentAlignment = Alignment.Center){
         Column(modifier = Modifier
-            .width(320.dp),
+            .fillMaxWidth(0.84f),
             verticalArrangement = Arrangement.Center,
             horizontalAlignment = Alignment.CenterHorizontally) {
-            Row {
+            Row(modifier = Modifier
+                .padding(8.dp)) {
                 //Text
                 RegisterScreenText(registerScreenText = "Welcome",
                     fontSize = 28.sp,
-                    fontWeight = FontWeight.Bold)
-            }
-            Row {
-                RegisterScreenText(registerScreenText = "Please Register",
-                    fontSize = 22.sp,
-                    fontWeight = FontWeight.Normal
+                    fontWeight = FontWeight.Bold,
+                    fontStyle = FontStyle.Normal
                 )
             }
-            Row {
+            Row(modifier = Modifier
+                .padding(8.dp)) {
+                RegisterScreenText(registerScreenText = "Please Register",
+                    fontSize = 22.sp,
+                    fontWeight = FontWeight.Normal,
+                    fontStyle = FontStyle.Normal
+                )
+            }
+            Row(modifier = Modifier
+                .padding(4.dp)) {
                 NameFields(nameField = "First Name")
             }
-            Row{
+            Row(modifier = Modifier
+                .padding(4.dp)){
                 NameFields(nameField = "Middle Name")
             }
-            Row {
+            Row(modifier = Modifier
+                .padding(4.dp)) {
                 NameFields(nameField = "Last Name")
             }
-            Row {
+            Row(modifier = Modifier
+                .padding(4.dp)) {
                 NameFields(nameField = "Surname")
             }
-            Row {
+            Row(modifier = Modifier
+                .padding(4.dp)) {
                 PhoneNumberField(phoneNumberField = "Enter your Phone Number")
             }
-            Row {
+            Row(modifier = Modifier
+                .padding(4.dp)) {
                 EmailField(emailField = "Enter your Email")
             }
-            Row {
+            Row (modifier = Modifier
+                .padding(4.dp)){
                 PasswordFieldCreate(createPassword = "Enter your Password")
             }
-            Row {
+            Row(modifier = Modifier
+                .padding(8.dp)) {
                 RegisterScreenText(registerScreenText = "Note: Ensure that your Password contains at least two Uppercase letters," +
                         " two numbers and two non-alphanumeric character",
                     fontSize = 12.sp,
-                    fontWeight = FontWeight.Light
+                    fontWeight = FontWeight.Light,
+                    fontStyle = FontStyle.Italic
                 )
             }
-            Row {
+            Row(modifier = Modifier
+                .padding(4.dp)) {
                 PasswordFieldConfirm(confirmPassword = "Confirm your Password")
             }
-            Row {
-                SignUpButton(navController = rememberNavController())
+            Row(modifier = Modifier
+                .padding(8.dp)) {
+                SignUpButton(navController)
             }
-            Row {
+            Row (modifier = Modifier
+                .padding(8.dp)){
                 RegisterScreenText(registerScreenText = "Already have an account?",
                     fontSize = 15.sp,
-                    fontWeight = FontWeight.Normal)
+                    fontWeight = FontWeight.Normal,
+                    fontStyle = FontStyle.Normal)
             }
-            Row {
-                LogInButton(navController = rememberNavController())
+            Row (modifier = Modifier
+                .padding(8.dp)){
+                LogInButton(navController)
             }
         }
     }
@@ -105,14 +121,16 @@ fun RegisterForm(navController: NavController){
 @Composable
 fun RegisterScreenText(registerScreenText: String,
                        fontSize: TextUnit,
-                       fontWeight: FontWeight){
+                       fontWeight: FontWeight,
+                       fontStyle: FontStyle){
     Text(text = registerScreenText,
         textAlign = TextAlign.Left,
         fontSize = fontSize,
         fontWeight = fontWeight,
+        fontStyle = fontStyle,
         modifier = Modifier
             .fillMaxWidth()
-            .padding(2.dp)
+            .padding(0.dp)
     )
 }
 
@@ -216,9 +234,7 @@ fun SignUpButton(navController: NavController){
 
 @Composable
 fun LogInButton(navController: NavController){
-    Button(onClick = {
-        navController.navigate(ROUTE_LOGIN)
-    },
+    Button(onClick = {navController.navigate(ROUTE_LOGIN)},
         modifier = Modifier
             .fillMaxWidth()
             .padding(4.dp)) {

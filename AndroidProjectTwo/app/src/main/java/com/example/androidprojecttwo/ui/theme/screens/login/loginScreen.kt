@@ -7,6 +7,8 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Button
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
@@ -18,8 +20,11 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.text.font.FontStyle
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
@@ -29,98 +34,87 @@ import java.net.PasswordAuthentication
 
 @Composable
 fun LoginScreen(navController: NavController) {
-    Column(
-        modifier = Modifier
-            .fillMaxWidth(1f),
-        verticalArrangement = Arrangement.Center,
-        horizontalAlignment = Alignment.CenterHorizontally
-    ) {
-        LoginTextIntro(navController)
-        Box(
+    Box(modifier = Modifier
+        .verticalScroll(rememberScrollState())
+        .fillMaxWidth(),
+        contentAlignment = Alignment.Center){
+        Column(
             modifier = Modifier
-                .fillMaxWidth()
-                .padding(10.dp),
-            contentAlignment = Alignment.Center
+                .fillMaxWidth(0.84f),
+            verticalArrangement = Arrangement.Center,
+            horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            EmailField(navController)
-        }
-        Box(
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(10.dp),
-            contentAlignment = Alignment.Center
-        ) {
-            PasswordField(navController)
-        }
-        Box(
-            modifier = Modifier
-                .fillMaxWidth(),
-            contentAlignment = Alignment.Center
-        ) {
-            LoginButton(navController)
-        }
-        SignUpQuestion(navController)
-        Box(
-            modifier = Modifier
-                .fillMaxWidth(),
-            contentAlignment = Alignment.Center
-        ) {
-            SignUpButton(navController)
+            Row(modifier = Modifier
+                .padding(8.dp)) {
+                LoginScreenText(loginScreenText = "Welcome Back",
+                    fontSize = 22.sp,
+                    fontWeight = FontWeight.Bold,
+                    fontStyle = FontStyle.Normal
+                )
+            }
+            Row(modifier = Modifier
+                .padding(8.dp)) {
+                LoginScreenText(loginScreenText = "Please Sign In",
+                    fontSize = 20.sp,
+                    fontWeight = FontWeight.Normal,
+                    fontStyle = FontStyle.Normal
+                )
+            }
+            Row(
+                modifier = Modifier
+                    .padding(4.dp),
+            ) {
+                EmailField()
+            }
+            Row(
+                modifier = Modifier
+                    .padding(4.dp),
+            ) {
+                PasswordField()
+            }
+            Row(
+                modifier = Modifier
+                    .padding(8.dp)
+                ,
+            ) {
+                LoginButton(navController)
+            }
+            Row(modifier = Modifier.padding(8.dp)) {
+                LoginScreenText(loginScreenText = "Don't have an account?",
+                    fontSize = 15.sp,
+                    fontWeight = FontWeight.Normal,
+                    fontStyle = FontStyle.Normal
+                )
+            }
+            Row(
+                modifier = Modifier
+                    .padding(8.dp),
+            ) {
+                SignUpButton(navController)
+            }
         }
     }
     }
 
 
 @Composable
-fun LoginTextIntro(navController: NavController){
-//    Box(modifier = Modifier.fillMaxWidth(),
-//        contentAlignment = Alignment.Center){
-//        Row(modifier = Modifier
-//            .width(320.dp)) {
-//            Text(text = "Welcome Back",
-//                modifier = Modifier.fillMaxWidth(),
-//                textAlign = TextAlign.Left,
-//                fontSize = 24.sp
-//            )
-//        }
-//    }
-//    Box(modifier = Modifier.fillMaxWidth(),
-//        contentAlignment = Alignment.Center){
-//        Row(modifier = Modifier
-//            .width(320.dp)) {
-//            Text(text = "Please Sign In",
-//                modifier = Modifier.fillMaxWidth(),
-//                textAlign = TextAlign.Left,
-//                fontSize = 20.sp
-//            )
-//        }
-//    }
-    Box(modifier = Modifier.fillMaxWidth(),
-        contentAlignment = Alignment.Center){
-        Column(modifier = Modifier
-            .width(320.dp)) {
-            Row(){
-                Text(text = "Welcome Back",
-                    modifier = Modifier.fillMaxWidth(),
-                    textAlign = TextAlign.Left,
-                    fontSize = 24.sp
-                )
-            }
-            Row(){
-                Text(text = "Please Sign In",
-                    modifier = Modifier.fillMaxWidth(),
-                    textAlign = TextAlign.Left,
-                    fontSize = 20.sp
-                )
-            }
-        }
-    }
-
-
+fun LoginScreenText(loginScreenText: String,
+                    fontSize: TextUnit,
+                    fontWeight: FontWeight,
+                    fontStyle: FontStyle){
+    Text(text = loginScreenText,
+        textAlign = TextAlign.Left,
+        fontSize = fontSize,
+        fontWeight = fontWeight,
+        fontStyle = fontStyle,
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(0.dp)
+    )
 }
 
 @Composable
-fun EmailField(navController: NavController){
+fun EmailField(){
     var text by remember {
         mutableStateOf(value = "")
     }
@@ -129,12 +123,13 @@ fun EmailField(navController: NavController){
         },
         label = { Text(text = "Enter your Email") },
         modifier = Modifier
-            .width(320.dp)
+            .fillMaxWidth()
+            .padding(4.dp)
     )
 }
 
 @Composable
-fun PasswordField(navController: NavController){
+fun PasswordField(){
     Box(modifier = Modifier,
         contentAlignment = Alignment.Center){}
     var text by remember {
@@ -145,7 +140,8 @@ fun PasswordField(navController: NavController){
         },
         label = { Text(text = "Enter your Password")},
         modifier = Modifier
-            .width(320.dp)
+            .fillMaxWidth()
+            .padding(4.dp)
     )
 }
 
@@ -153,25 +149,17 @@ fun PasswordField(navController: NavController){
 fun LoginButton(navController: NavController){
         Button(onClick = { /*TODO*/ },
             modifier = Modifier
-                .width(320.dp)) {
+                .fillMaxWidth()) {
             Text(text = "SIGN IN")
         }
 }
-@Composable
-fun SignUpQuestion(navController: NavController){
-    Box(modifier = Modifier.fillMaxWidth(),
-        contentAlignment = Alignment.Center){
-        Text(text = "Don't have an account?",
-            modifier = Modifier,
-            textAlign = TextAlign.Center)
-    }
-}
+
 
 @Composable
 fun SignUpButton(navController: NavController){
         Button(onClick = {navController.navigate(ROUTE_REGISTER)},
             modifier = Modifier
-                .width(320.dp)) {
+                .fillMaxWidth()) {
             Text(text = "SIGN UP")
         }
 }
