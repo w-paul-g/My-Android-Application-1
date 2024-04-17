@@ -21,12 +21,28 @@ import com.google.firebase.database.FirebaseDatabase
 //        progress.setTitle("Loading")
 //        progress.setMessage("PLease Wait.....")
 //    }
-//    fun signup(email: String,password: String, confirmpassword:String){
+//    fun signup(
+//        firstName: String,
+//        middleName: String,
+//        lastName: String,
+//        surname: String,
+//        phoneNumber: String,
+//        email: String,
+//        password: String,
+//        confirmpassword:String
+//    ){
 //        // progress.show()
 //
-//        if (email.isBlank() || password.isBlank() ||confirmpassword.isBlank()){
+//        if (firstName.isBlank() ||
+//            lastName.isBlank() ||
+//            phoneNumber.isBlank() ||
+//            email.isBlank() ||
+//            password.isBlank() ||
+//            confirmpassword.isBlank()
+//            ){
+//
 //            //progress.dismiss()
-//            Toast.makeText(context,"Please email and password cannot be blank",
+//            Toast.makeText(context,"Fields cannot be blank",
 //                Toast.LENGTH_LONG).show()
 //            return
 //        }else if (password != confirmpassword){
@@ -35,7 +51,15 @@ import com.google.firebase.database.FirebaseDatabase
 //        }else{
 //            mAuth.createUserWithEmailAndPassword(email,password).addOnCompleteListener {
 //                if (it.isSuccessful){
-//                    val userdata= User(email,password,mAuth.currentUser!!.uid)
+//                    val userdata = User(
+//                        firstName,
+//                        middleName,
+//                        lastName,
+//                        surname,
+//                        fullNameString = String(),
+//                        phoneNumber,
+//                        email,
+//                        password,mAuth.currentUser!!.uid)
 //                    val regRef= FirebaseDatabase.getInstance().getReference()
 //                        .child("Users/"+mAuth.currentUser!!.uid)
 //                    regRef.setValue(userdata).addOnCompleteListener {
@@ -58,7 +82,6 @@ import com.google.firebase.database.FirebaseDatabase
 //                }
 //
 //            } }
-//
 //    }
 //    fun login(email: String,password: String){
 //        progress.show()
@@ -67,10 +90,10 @@ import com.google.firebase.database.FirebaseDatabase
 //            progress.dismiss()
 //            if (it.isSuccessful){
 //                Toast.makeText(context,
-//                    "Succeffully Logged in",
+//                    "Successfully Logged in",
 //                    Toast.LENGTH_LONG).show()
 //                navController.navigate(ROUTE_HOME)
-////                navController.navigate(ROUTE_REGISTER)TO TAKE YOU TO A DIIFFERNT PAGE
+////                navController.navigate(ROUTE_REGISTER)TO TAKE YOU TO A DIFFERENT PAGE
 //            }else{
 //                Toast.makeText(context,"${it.exception!!.message}",
 //                    Toast.LENGTH_LONG).show()
@@ -121,7 +144,9 @@ class AuthViewModel(var navController: NavController, var context: Context){
                     regRef.setValue(userdata).addOnCompleteListener {
 
                         if (it.isSuccessful){
-                            Toast.makeText(context,"Registered Successfully",Toast.LENGTH_LONG).show()
+                            Toast.makeText(context,
+                                "Registered Successfully",
+                                Toast.LENGTH_LONG).show()
                             navController.navigate(ROUTE_HOME)
 
                         }else{
@@ -142,9 +167,9 @@ class AuthViewModel(var navController: NavController, var context: Context){
         mAuth.signInWithEmailAndPassword(email,pass).addOnCompleteListener {
             progress.dismiss()
             if (it.isSuccessful){
-                Toast.makeText(context,"Succeffully Logged in",Toast.LENGTH_LONG).show()
+                Toast.makeText(context,"Successfully Logged in",Toast.LENGTH_LONG).show()
                 navController.navigate(ROUTE_HOME)
-//                navController.navigate(ROUTE_REGISTER)TO TAKE YOU TO A DIIFFERNT PAGE
+//                navController.navigate(ROUTE_REGISTER)TO TAKE YOU TO A DIFFERENT PAGE
             }else{
                 Toast.makeText(context,"${it.exception!!.message}",Toast.LENGTH_LONG).show()
                 navController.navigate(ROUTE_LOGIN)

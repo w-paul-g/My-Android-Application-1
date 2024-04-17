@@ -238,8 +238,8 @@ import com.example.androidprojecttwo.navigation.ROUTE_LOGIN
 //@Composable
 //fun SignUpButton(navController: NavController){
 //    Button(onClick = {
-//        val myregister = AuthViewModel(navController, context)
-//        myregister.signup(email.text.trim(),
+//        val register = AuthViewModel(navController, context)
+//        register.signup(email.text.trim(),
 //            password.text.trim(),
 //            confirmpassword.text.trim())
 //        navController.navigate(ROUTE_HOME)
