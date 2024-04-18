@@ -37,23 +37,23 @@ fun HomeScreen(navController: NavController){
         Column(modifier = Modifier
             .fillMaxWidth(0.84f),
             verticalArrangement = Arrangement.Center) {
-            Row(modifier = Modifier
-                .padding(8.dp)) {
-                HomeScreenText(homeScreenText = "HOME SCREEN",
-                    textAlign = TextAlign.Left,
-                    fontSize = 26.sp,
-                    fontWeight = FontWeight.Bold,
-                    fontStyle = FontStyle.Normal
-                )
-            }
-            Row(modifier = Modifier
-                .padding(8.dp)) {
-                LoginButton(navController)
-            }
-            Row(modifier = Modifier
-                .padding(8.dp)) {
-                SignUpButton(navController)
-            }
+//            Row(modifier = Modifier
+//                .padding(8.dp)) {
+//                HomeScreenText(homeScreenText = "HOME SCREEN",
+//                    textAlign = TextAlign.Left,
+//                    fontSize = 26.sp,
+//                    fontWeight = FontWeight.Bold,
+//                    fontStyle = FontStyle.Normal
+//                )
+//            }
+//            Row(modifier = Modifier
+//                .padding(8.dp)) {
+//                LoginButton(navController)
+//            }
+//            Row(modifier = Modifier
+//                .padding(8.dp)) {
+//                SignUpButton(navController)
+//            }
             Row(modifier = Modifier
                 .padding(8.dp)) {
                 AboutButton(navController)
@@ -62,65 +62,65 @@ fun HomeScreen(navController: NavController){
     }
 }
 
-
-@Composable
-fun HomeScreenText(homeScreenText:String,
-                   textAlign: TextAlign,
-                   fontSize: TextUnit,
-                   fontWeight: FontWeight,
-                   fontStyle: FontStyle){
-    Text(text = homeScreenText,
-        textAlign = textAlign,
-        fontSize = fontSize,
-        fontWeight = fontWeight,
-        fontStyle = fontStyle,
-        modifier = Modifier
-            .fillMaxWidth()
-            .padding(2.dp)
-    )
-}
-@Composable
-fun LoginButton(navController: NavController) {
-    Button(onClick = {
-        navController.navigate(ROUTE_LOGIN)
-                     },
-        modifier = Modifier
-            .fillMaxWidth()
-            .padding(4.dp)) {
-        Text(text = "SIGN IN",
-            modifier = Modifier
-                .padding(4.dp))
-    }
-}
-@Composable
-fun SignUpButton(navController: NavController) {
-    Button(onClick = {
-        navController.navigate(ROUTE_LOGIN)
-    },
-        modifier = Modifier
-            .fillMaxWidth()
-            .padding(4.dp)) {
-        Text(text = "SIGN UP",
-            modifier = Modifier
-                .padding(4.dp))
-    }
-}
-@Composable
-fun AboutButton(navController: NavController) {
-    Button(onClick = {
-        navController.navigate(ROUTE_ABOUT)
-    },
-        modifier = Modifier
-            .fillMaxWidth()
-            .padding(4.dp)) {
-        Text(text = "ABOUT US",
-            modifier = Modifier
-                .padding(4.dp))
-    }
-}
-
-@Preview(showBackground = true, showSystemUi = true)
-@Composable
-fun HomeScreenPreview(){
-    HomeScreen(navController = rememberNavController())
-}
+//
+//@Composable
+//fun HomeScreenText(homeScreenText:String,
+//                   textAlign: TextAlign,
+//                   fontSize: TextUnit,
+//                   fontWeight: FontWeight,
+//                   fontStyle: FontStyle){
+//    Text(text = homeScreenText,
+//        textAlign = textAlign,
+//        fontSize = fontSize,
+//        fontWeight = fontWeight,
+//        fontStyle = fontStyle,
+//        modifier = Modifier
+//            .fillMaxWidth()
+//            .padding(2.dp)
+//    )
+//}
+//@Composable
+//fun LoginButton(navController: NavController) {
+//    Button(onClick = {
+//        navController.navigate(ROUTE_LOGIN)
+//    },
+//        modifier = Modifier
+//            .fillMaxWidth()
+//            .padding(4.dp)) {
+//        Text(text = "SIGN IN",
+//            modifier = Modifier
+//                .padding(4.dp))
+//    }
+//}
+//@Composable
+//fun SignUpButton(navController: NavController) {
+//    Button(onClick = {
+//        navController.navigate(ROUTE_LOGIN)
+//    },
+//        modifier = Modifier
+//            .fillMaxWidth()
+//            .padding(4.dp)) {
+//        Text(text = "SIGN UP",
+//            modifier = Modifier
+//                .padding(4.dp))
+//    }
+//}
+//@Composable
+//fun AboutButton(navController: NavController) {
+//    Button(onClick = {
+//        navController.navigate(ROUTE_ABOUT)
+//    },
+//        modifier = Modifier
+//            .fillMaxWidth()
+//            .padding(4.dp)) {
+//        Text(text = "ABOUT US",
+//            modifier = Modifier
+//                .padding(4.dp))
+//    }
+//}
+//
+//@Preview(showBackground = true, showSystemUi = true)
+//@Composable
+//fun HomeScreenPreview(){
+//    HomeScreen(navController = rememberNavController())
+//}
