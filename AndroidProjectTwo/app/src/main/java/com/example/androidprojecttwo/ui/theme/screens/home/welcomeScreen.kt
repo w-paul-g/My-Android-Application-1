@@ -10,6 +10,7 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Button
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -24,7 +25,9 @@ import androidx.navigation.NavController
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.example.androidprojecttwo.navigation.ROUTE_ABOUT
+import com.example.androidprojecttwo.navigation.ROUTE_HOME
 import com.example.androidprojecttwo.navigation.ROUTE_LOGIN
+import com.example.androidprojecttwo.navigation.ROUTE_REGISTER
 
 @Composable
 fun WelcomeScreen(navController: NavHostController){
@@ -37,7 +40,7 @@ fun WelcomeScreen(navController: NavHostController){
             verticalArrangement = Arrangement.Center) {
             Row(modifier = Modifier
                 .padding(8.dp)) {
-                HomeScreenText(homeScreenText = "HOME SCREEN",
+                WelcomeScreenText(homeScreenText = "WELCOME",
                     textAlign = TextAlign.Left,
                     fontSize = 26.sp,
                     fontWeight = FontWeight.Bold,
@@ -54,13 +57,17 @@ fun WelcomeScreen(navController: NavHostController){
             }
             Row(modifier = Modifier
                 .padding(8.dp)) {
+                HomeButton(navController)
+            }
+            Row(modifier = Modifier
+                .padding(8.dp)) {
                 AboutButton(navController)
             }
         }
     }
 }
 @Composable
-fun HomeScreenText(homeScreenText:String,
+fun WelcomeScreenText(homeScreenText:String,
                    textAlign: TextAlign,
                    fontSize: TextUnit,
                    fontWeight: FontWeight,
@@ -92,7 +99,7 @@ fun LoginButton(navController: NavController) {
 @Composable
 fun SignUpButton(navController: NavController) {
     Button(onClick = {
-        navController.navigate(ROUTE_LOGIN)
+        navController.navigate(ROUTE_REGISTER)
     },
         modifier = Modifier
             .fillMaxWidth()
@@ -103,8 +110,21 @@ fun SignUpButton(navController: NavController) {
     }
 }
 @Composable
-fun AboutButton(navController: NavController) {
+fun HomeButton(navController: NavController) {
     Button(onClick = {
+        navController.navigate(ROUTE_HOME)
+    },
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(4.dp)) {
+        Text(text = "HOME",
+            modifier = Modifier
+                .padding(4.dp))
+    }
+}
+@Composable
+fun AboutButton(navController: NavController) {
+    TextButton(onClick = {
         navController.navigate(ROUTE_ABOUT)
     },
         modifier = Modifier

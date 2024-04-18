@@ -38,14 +38,20 @@ class ProductViewModel(
         productPrice: String
     ) {
         var id = System.currentTimeMillis().toString()
-        var productData = Product(productName, productQuantity, productPrice, id)
+        var productData = Product(
+            productName,
+            productQuantity,
+            productPrice,
+            id)
         var productRef = FirebaseDatabase.getInstance().getReference()
             .child("Products/$id")
         progress.show()
         productRef.setValue(productData).addOnCompleteListener {
             progress.dismiss()
             if (it.isSuccessful) {
-                Toast.makeText(context, "Saving successful", Toast.LENGTH_SHORT).show()
+                Toast.makeText(context,
+                    "Saving successful",
+                    Toast.LENGTH_SHORT).show()
             } else {
                 Toast.makeText(context,
                     "ERROR: ${it.exception!!.message}",
@@ -59,7 +65,8 @@ class ProductViewModel(
         product: MutableState<Product>,
         products: SnapshotStateList<Product>
     ): SnapshotStateList<Product> {
-        var ref = FirebaseDatabase.getInstance().getReference().child("Products")
+        var ref = FirebaseDatabase.getInstance().getReference()
+            .child("Products")
 
         progress.show()
         ref.addValueEventListener(object : ValueEventListener {
@@ -74,7 +81,9 @@ class ProductViewModel(
             }
 
             override fun onCancelled(error: DatabaseError) {
-                Toast.makeText(context, error.message, Toast.LENGTH_SHORT).show()
+                Toast.makeText(context,
+                    error.message,
+                    Toast.LENGTH_SHORT).show()
             }
         })
         return products
@@ -87,14 +96,23 @@ class ProductViewModel(
         delRef.removeValue().addOnCompleteListener {
             progress.dismiss()
             if (it.isSuccessful) {
-                Toast.makeText(context, "Product deleted", Toast.LENGTH_SHORT).show()
+                Toast.makeText(context,
+                    "Product deleted",
+                    Toast.LENGTH_SHORT).show()
             } else {
-                Toast.makeText(context, it.exception!!.message, Toast.LENGTH_SHORT).show()
+                Toast.makeText(context,
+                    it.exception!!.message,
+                    Toast.LENGTH_SHORT).show()
             }
         }
     }
 
-    fun updateProduct(name: String, quantity: String, price: String, id: String) {
+    fun updateProduct(
+        name: String,
+        quantity: String,
+        price: String,
+        id: String
+    ) {
         var updateRef = FirebaseDatabase.getInstance().getReference()
             .child("Products/$id")
         progress.show()
@@ -102,9 +120,13 @@ class ProductViewModel(
         updateRef.setValue(updateData).addOnCompleteListener {
             progress.dismiss()
             if (it.isSuccessful) {
-                Toast.makeText(context, "Update successful", Toast.LENGTH_SHORT).show()
+                Toast.makeText(context,
+                    "Update successful",
+                    Toast.LENGTH_SHORT).show()
             } else {
-                Toast.makeText(context, it.exception!!.message, Toast.LENGTH_SHORT).show()
+                Toast.makeText(context,
+                    it.exception!!.message,
+                    Toast.LENGTH_SHORT).show()
             }
         }
     }

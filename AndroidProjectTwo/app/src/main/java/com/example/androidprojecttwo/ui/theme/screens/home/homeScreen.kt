@@ -25,7 +25,10 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.example.androidprojecttwo.navigation.ROUTE_ABOUT
+import com.example.androidprojecttwo.navigation.ROUTE_ADD_PRODUCT
 import com.example.androidprojecttwo.navigation.ROUTE_LOGIN
+import com.example.androidprojecttwo.navigation.ROUTE_UPDATE_PRODUCT
+import com.example.androidprojecttwo.navigation.ROUTE_VIEW_PRODUCTS
 
 
 @Composable
@@ -54,6 +57,19 @@ fun HomeScreen(navController: NavController){
 //                .padding(8.dp)) {
 //                SignUpButton(navController)
 //            }
+            Row(modifier = Modifier
+                .padding(8.dp)) {
+                AddProductsButton(navController)
+            }
+            Row(modifier = Modifier
+                .padding(8.dp)) {
+                ViewProductsButton(navController)
+            }
+            Row(modifier = Modifier
+                .padding(8.dp)) {
+                UpdateProductsButton(navController)
+            }
+
             Row(modifier = Modifier
                 .padding(8.dp)) {
                 AboutButton(navController)
@@ -118,6 +134,45 @@ fun HomeScreen(navController: NavController){
 //                .padding(4.dp))
 //    }
 //}
+@Composable
+fun AddProductsButton(navController: NavController) {
+    Button(onClick = {
+        navController.navigate(ROUTE_ADD_PRODUCT)
+    },
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(4.dp)) {
+        Text(text = "ADD NEW PRODUCTS",
+            modifier = Modifier
+                .padding(4.dp))
+    }
+}
+@Composable
+fun UpdateProductsButton(navController: NavController) {
+    Button(onClick = {
+        navController.navigate(ROUTE_UPDATE_PRODUCT)
+    },
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(4.dp)) {
+        Text(text = "UPDATE PRODUCTS",
+            modifier = Modifier
+                .padding(4.dp))
+    }
+}
+@Composable
+fun ViewProductsButton(navController: NavController) {
+    Button(onClick = {
+        navController.navigate(ROUTE_VIEW_PRODUCTS)
+    },
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(4.dp)) {
+        Text(text = "PRODUCTS",
+            modifier = Modifier
+                .padding(4.dp))
+    }
+}
 //
 //@Preview(showBackground = true, showSystemUi = true)
 //@Composable

@@ -1,5 +1,6 @@
 package com.example.androidprojecttwo.navigation
 
+import UpdateProductScreen
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavController
@@ -15,6 +16,8 @@ import com.example.androidprojecttwo.ui.theme.screens.home.HomeScreen
 import com.example.androidprojecttwo.ui.theme.screens.home.WelcomeScreen
 import com.example.androidprojecttwo.ui.theme.screens.login.LoginScreen
 import com.example.androidprojecttwo.ui.theme.screens.products.AddProductScreen
+
+import com.example.androidprojecttwo.ui.theme.screens.products.ViewProductScreen
 import com.example.androidprojecttwo.ui.theme.screens.register.RegisterScreen
 
 
@@ -47,8 +50,17 @@ fun AppNavHost(
         composable(ROUTE_REGISTER){
             RegisterScreen(navController)
         }
+
         composable(ROUTE_ADD_PRODUCT){
             AddProductScreen(navController)
+        }
+        composable(ROUTE_VIEW_PRODUCTS){
+            ViewProductScreen(navController)
+        }
+        composable(ROUTE_UPDATE_PRODUCT + "/{id}"){
+                passedData ->
+            UpdateProductScreen(
+                navController,passedData.arguments?.getString("id")!! )
         }
 
     }
