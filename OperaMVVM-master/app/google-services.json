@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "292017614472",
+    "project_id": "operamorning-2ab10",
+    "storage_bucket": "operamorning-2ab10.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:292017614472:android:9607c68453920267bbf93d",
+        "android_client_info": {
+          "package_name": "com.example.morningmvvm"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCECxUE2UW5OvsAmy_IlaBA0FvNSgtC-_E"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:292017614472:android:defcd545e1b3026cbbf93d",
+        "android_client_info": {
+          "package_name": "com.example.operamorning"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCECxUE2UW5OvsAmy_IlaBA0FvNSgtC-_E"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
