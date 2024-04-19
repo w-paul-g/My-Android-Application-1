@@ -1,55 +1,16 @@
 package com.example.androidprojecttwo.ui.theme.screens.register
 
-import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.width
-import androidx.compose.foundation.rememberScrollState
-import androidx.compose.foundation.verticalScroll
-import androidx.compose.material3.Button
-import androidx.compose.material3.OutlinedTextField
-import androidx.compose.material3.Text
-import androidx.compose.material3.TextField
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
-import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.text.font.FontStyle
-import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.unit.TextUnit
-import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
-import androidx.navigation.compose.rememberNavController
-import com.example.androidprojecttwo.data.AuthViewModel
-import com.example.androidprojecttwo.navigation.ROUTE_HOME
-import com.example.androidprojecttwo.navigation.ROUTE_LOGIN
-import androidx.compose.foundation.layout.Column
-import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
-import androidx.compose.ui.tooling.preview.Preview
-import androidx.navigation.NavController
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.Button
-import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
-
+import androidx.compose.material3.TextButton
+import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -61,11 +22,14 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.TextFieldValue
-
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.navigation.NavHostController
+import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
+import com.example.androidprojecttwo.data.AuthViewModel
+import com.example.androidprojecttwo.navigation.ROUTE_HOME
+import com.example.androidprojecttwo.navigation.ROUTE_LOGIN
 
 
 //
@@ -301,8 +265,7 @@ fun RegisterScreen(navController: NavController){
     var confirmpass by remember { mutableStateOf(TextFieldValue("")) }
     var context= LocalContext.current
     Column(modifier = Modifier
-        .fillMaxSize()
-        .background(Color.Blue),
+        .fillMaxSize(),
         horizontalAlignment = Alignment.CenterHorizontally) {
 
         Text(text = "Register here",
@@ -317,48 +280,44 @@ fun RegisterScreen(navController: NavController){
 
             keyboardOptions = KeyboardOptions . Default . copy (imeAction = ImeAction.Next),
             modifier = Modifier
-                .fillMaxWidth()
-                .padding(8.dp),
+                .padding(8.dp)
 
             )
-        Spacer(modifier = Modifier.height(20.dp))
+        //Spacer(modifier = Modifier.height(20.dp))
 
         OutlinedTextField(value =pass , onValueChange = {pass=it},
             label = { Text(text = "Enter password") },
             keyboardOptions = KeyboardOptions.Default.copy(imeAction = ImeAction.Next),
             modifier = Modifier
-                .fillMaxWidth()
                 .padding(8.dp)
         )
-        Spacer(modifier = Modifier.height(20.dp))
+        //Spacer(modifier = Modifier.height(20.dp))
         OutlinedTextField(value =confirmpass , onValueChange = {
             confirmpass=it},
             label = { Text(text = "Enter Confirm Pass") },
 
             keyboardOptions = KeyboardOptions.Default.copy(imeAction = ImeAction.Next),
             modifier = Modifier
-                .fillMaxWidth()
                 .padding(8.dp)
         )
-        Spacer(modifier = Modifier.height(20.dp))
+        //Spacer(modifier = Modifier.height(20.dp))
 
 
         Button(onClick = {
-
             val myregister = AuthViewModel(navController, context)
             myregister.signup(email.text.trim(),
                 pass.text.trim(),
                 confirmpass.text.trim())
             navController.navigate(ROUTE_HOME)
-
-        }, modifier = Modifier.fillMaxWidth()) {
+        }, modifier = Modifier
+            .padding(8.dp)) {
             Text(text = "Register ")
         }
-        Spacer(modifier = Modifier.height(20.dp))
+        //Spacer(modifier = Modifier.height(20.dp))
 
-        Button(onClick = {
+        TextButton(onClick = {
             navController.navigate(ROUTE_LOGIN)
-        }, modifier = Modifier.fillMaxWidth()) {
+        }, modifier = Modifier.padding(8.dp)) {
             Text(text = "Have an Account? Click to Login")
         }
 

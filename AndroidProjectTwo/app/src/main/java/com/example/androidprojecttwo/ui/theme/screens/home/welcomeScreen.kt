@@ -35,11 +35,15 @@ fun WelcomeScreen(navController: NavHostController){
         .fillMaxWidth()
         .verticalScroll(rememberScrollState()),
         contentAlignment = Alignment.Center){
-        Column(modifier = Modifier
-            .fillMaxWidth(0.84f),
+        Column(modifier = Modifier,
             verticalArrangement = Arrangement.Center) {
-            Row(modifier = Modifier
-                .padding(8.dp)) {
+            Row(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(8.dp),
+                horizontalArrangement = Arrangement.Center,
+                verticalAlignment = Alignment.CenterVertically
+            ) {
                 WelcomeScreenText(homeScreenText = "WELCOME",
                     textAlign = TextAlign.Left,
                     fontSize = 26.sp,
@@ -47,20 +51,36 @@ fun WelcomeScreen(navController: NavHostController){
                     fontStyle = FontStyle.Normal
                 )
             }
-            Row(modifier = Modifier
-                .padding(8.dp)) {
+            Row(
+                modifier = Modifier
+                .fillMaxWidth()
+                .padding(8.dp),
+                horizontalArrangement = Arrangement.Center,
+                ) {
                 LoginButton(navController)
             }
-            Row(modifier = Modifier
-                .padding(8.dp)) {
+            Row(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(8.dp),
+                horizontalArrangement = Arrangement.Center,
+            ) {
                 SignUpButton(navController)
             }
-            Row(modifier = Modifier
-                .padding(8.dp)) {
+            Row(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(8.dp),
+                horizontalArrangement = Arrangement.Center,
+            ) {
                 HomeButton(navController)
             }
-            Row(modifier = Modifier
-                .padding(8.dp)) {
+            Row(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(8.dp),
+                horizontalArrangement = Arrangement.Center,
+            ) {
                 AboutButton(navController)
             }
         }
@@ -89,7 +109,7 @@ fun LoginButton(navController: NavController) {
         navController.navigate(ROUTE_LOGIN)
     },
         modifier = Modifier
-            .fillMaxWidth()
+            .fillMaxWidth(0.6f)
             .padding(4.dp)) {
         Text(text = "SIGN IN",
             modifier = Modifier
@@ -102,7 +122,7 @@ fun SignUpButton(navController: NavController) {
         navController.navigate(ROUTE_REGISTER)
     },
         modifier = Modifier
-            .fillMaxWidth()
+            .fillMaxWidth(0.6f)
             .padding(4.dp)) {
         Text(text = "SIGN UP",
             modifier = Modifier
@@ -115,7 +135,7 @@ fun HomeButton(navController: NavController) {
         navController.navigate(ROUTE_HOME)
     },
         modifier = Modifier
-            .fillMaxWidth()
+            .fillMaxWidth(0.6f)
             .padding(4.dp)) {
         Text(text = "HOME",
             modifier = Modifier

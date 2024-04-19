@@ -1,6 +1,5 @@
 
 
-import android.content.res.Configuration
 import android.widget.Toast
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -36,7 +35,7 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.example.androidprojecttwo.data.ProductViewModel
 import com.example.androidprojecttwo.models.Product
-
+import com.example.androidprojecttwo.navigation.ROUTE_VIEW_PRODUCTS
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
@@ -44,7 +43,9 @@ import com.google.firebase.database.ValueEventListener
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun UpdateProductScreen(navController: NavHostController,id:String) {
+fun UpdateProductScreen(
+    navController: NavHostController,
+    id:String) {
     Box(modifier = Modifier
         .verticalScroll(rememberScrollState()))
     {
@@ -116,6 +117,7 @@ fun UpdateProductScreen(navController: NavHostController,id:String) {
                 var productRepository = ProductViewModel(navController, context)
                 productRepository.updateProduct(productName.text.trim(),productQuantity.text.trim(),
                     productPrice.text.trim(),id)
+                navController.navigate(ROUTE_VIEW_PRODUCTS)
 
 
             }) {
@@ -126,8 +128,8 @@ fun UpdateProductScreen(navController: NavHostController,id:String) {
     }
 }
 
-@Preview
+@Preview()
 @Composable
-fun update() {
-    UpdateProductScreen(rememberNavController(), id = "")
+fun Update() {
+    UpdateProductScreen(rememberNavController(), id= "")
 }

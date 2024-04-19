@@ -1,7 +1,6 @@
 package com.example.androidprojecttwo.ui.theme.screens.home
 
-import android.graphics.Paint.Align
-import android.widget.Button
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -9,27 +8,26 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Add
 import androidx.compose.material3.Button
+import androidx.compose.material3.Card
+import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.text.font.FontStyle
-import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
-import com.example.androidprojecttwo.navigation.ROUTE_ABOUT
 import com.example.androidprojecttwo.navigation.ROUTE_ADD_PRODUCT
-import com.example.androidprojecttwo.navigation.ROUTE_LOGIN
-import com.example.androidprojecttwo.navigation.ROUTE_UPDATE_PRODUCT
 import com.example.androidprojecttwo.navigation.ROUTE_VIEW_PRODUCTS
-
 
 @Composable
 fun HomeScreen(navController: NavController){
@@ -38,7 +36,7 @@ fun HomeScreen(navController: NavController){
         .verticalScroll(rememberScrollState()),
         contentAlignment = Alignment.Center){
         Column(modifier = Modifier
-            .fillMaxWidth(0.84f),
+            ,
             verticalArrangement = Arrangement.Center) {
 //            Row(modifier = Modifier
 //                .padding(8.dp)) {
@@ -58,17 +56,31 @@ fun HomeScreen(navController: NavController){
 //                SignUpButton(navController)
 //            }
             Row(modifier = Modifier
+                .fillMaxWidth(1f)
                 .padding(8.dp)) {
-                AddProductsButton(navController)
+                Box(
+                    modifier = Modifier
+                        .fillMaxWidth(0.5f),
+                    contentAlignment = Alignment.Center
+                ) {
+                    AddProductsButton(navController)
+                }
+                Box(
+                    modifier = Modifier
+                        .fillMaxWidth(),
+                    contentAlignment = Alignment.Center
+                ) {
+                    ViewProductsButton(navController)
+                }
+
             }
-            Row(modifier = Modifier
-                .padding(8.dp)) {
-                ViewProductsButton(navController)
-            }
-            Row(modifier = Modifier
-                .padding(8.dp)) {
-                UpdateProductsButton(navController)
-            }
+//            Row(modifier = Modifier
+//                .padding(8.dp)) {
+//            }
+//            Row(modifier = Modifier
+//                .padding(8.dp)) {
+//                UpdateProductsButton(navController)
+//            }
 
             Row(modifier = Modifier
                 .padding(8.dp)) {
@@ -139,43 +151,51 @@ fun AddProductsButton(navController: NavController) {
     Button(onClick = {
         navController.navigate(ROUTE_ADD_PRODUCT)
     },
-        modifier = Modifier
-            .fillMaxWidth()
-            .padding(4.dp)) {
+        modifier = Modifier,
+        shape = RoundedCornerShape(4.dp)
+        )
+    {
+        Icon(imageVector = Icons.Filled.Add, contentDescription = "Add New Products")
         Text(text = "ADD NEW PRODUCTS",
+            textAlign = TextAlign.Center,
             modifier = Modifier
-                .padding(4.dp))
+                .padding(0.dp))
+
     }
 }
-@Composable
-fun UpdateProductsButton(navController: NavController) {
-    Button(onClick = {
-        navController.navigate(ROUTE_UPDATE_PRODUCT)
-    },
-        modifier = Modifier
-            .fillMaxWidth()
-            .padding(4.dp)) {
-        Text(text = "UPDATE PRODUCTS",
-            modifier = Modifier
-                .padding(4.dp))
-    }
-}
+//@Composable
+//fun UpdateProductsButton(navController: NavController) {
+//    Button(onClick = {
+//        navController.navigate(ROUTE_UPDATE_PRODUCT)
+//    },
+//        modifier = Modifier
+//            .fillMaxWidth()
+//            .padding(4.dp)) {
+//        Text(text = "UPDATE PRODUCTS",
+//            modifier = Modifier
+//                .padding(4.dp))
+//    }
+//}
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun ViewProductsButton(navController: NavController) {
-    Button(onClick = {
+    Card(onClick = {
         navController.navigate(ROUTE_VIEW_PRODUCTS)
     },
         modifier = Modifier
-            .fillMaxWidth()
-            .padding(4.dp)) {
+            .padding(0.dp)
+            .background(Color.Transparent),
+        shape = RoundedCornerShape(4.dp)
+       ) {
         Text(text = "PRODUCTS",
+            textAlign = TextAlign.Center,
             modifier = Modifier
-                .padding(4.dp))
+                .padding(0.dp))
     }
 }
-//
-//@Preview(showBackground = true, showSystemUi = true)
-//@Composable
-//fun HomeScreenPreview(){
-//    HomeScreen(navController = rememberNavController())
-//}
+
+@Preview(showBackground = true, showSystemUi = true)
+@Composable
+fun HomeScreenPreview(){
+    HomeScreen(navController = rememberNavController())
+}

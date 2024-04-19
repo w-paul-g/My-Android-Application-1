@@ -1,44 +1,5 @@
 package com.example.androidprojecttwo.ui.theme.screens.login
 
-import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.width
-import androidx.compose.foundation.rememberScrollState
-import androidx.compose.foundation.verticalScroll
-import androidx.compose.material3.Button
-import androidx.compose.material3.OutlinedTextField
-import androidx.compose.material3.Text
-import androidx.compose.material3.TextField
-import androidx.compose.material3.TextFieldDefaults
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
-import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.text.font.FontStyle
-import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.unit.TextUnit
-import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
-import androidx.navigation.compose.rememberNavController
-import com.example.androidprojecttwo.data.AuthViewModel
-import com.example.androidprojecttwo.navigation.ROUTE_REGISTER
-import java.net.PasswordAuthentication
-import androidx.compose.foundation.layout.Column
-import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
-import androidx.compose.ui.tooling.preview.Preview
-import androidx.navigation.NavController
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
@@ -47,10 +8,10 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.Button
-import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
-
+import androidx.compose.material3.TextButton
+import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -62,11 +23,14 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.TextFieldValue
-
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.navigation.NavHostController
+import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
+import com.example.androidprojecttwo.data.AuthViewModel
+import com.example.androidprojecttwo.navigation.ROUTE_REGISTER
+
 //import com.example.firebaseauth.data.AuthViewModel
 //import com.example.firebaseauth.navigation.ROUTE_HOME
 //import com.example.firebaseauth.navigation.ROUTE_REGISTER
@@ -224,8 +188,7 @@ fun LoginScreen(navController: NavController){
     }
     var context= LocalContext.current
     Column(modifier = Modifier
-        .fillMaxSize()
-        .background(Color.Blue),
+        .fillMaxSize(),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         Text(text = "Login here",
@@ -238,7 +201,6 @@ fun LoginScreen(navController: NavController){
             label = { Text(text = "Enter Email") },
             keyboardOptions = KeyboardOptions.Default.copy(imeAction = ImeAction.Next),
             modifier = Modifier
-                .fillMaxWidth()
                 .padding(8.dp),
 
             )
@@ -248,7 +210,6 @@ fun LoginScreen(navController: NavController){
             label = { Text(text = "Enter Password") },
             keyboardOptions = KeyboardOptions.Default.copy(imeAction = ImeAction.Next),
             modifier = Modifier
-                .fillMaxWidth()
                 .padding(8.dp)
         )
         Spacer(modifier = Modifier.height(20.dp))
@@ -259,12 +220,12 @@ fun LoginScreen(navController: NavController){
                 email.text.trim(),
                 pass.text.trim()
             )
-        }, modifier = Modifier.fillMaxWidth()) {
+        }, modifier = Modifier.padding(8.dp)) {
             Text(text = "Log In")
         }
         Spacer(modifier = Modifier.height(20.dp))
 
-        Button(onClick = {
+        TextButton(onClick = {
             navController.navigate(ROUTE_REGISTER)
         }, modifier = Modifier.fillMaxWidth()) {
             Text(text = "Don't have account? Click to Register")
