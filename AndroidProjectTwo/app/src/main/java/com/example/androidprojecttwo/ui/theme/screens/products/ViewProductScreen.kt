@@ -114,11 +114,7 @@ fun ProductItem(
         }) {
             Text(text = "Delete")
         }
-        Button(onClick = {
-            navController.navigate(ROUTE_UPDATE_PRODUCT + "/$id")
-        }) {
-            Text(text = "Update")
-        }
+        
     }
 }
 
