@@ -5,7 +5,9 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.text.KeyboardOptions
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Button
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
@@ -265,7 +267,8 @@ fun RegisterScreen(navController: NavController){
     var confirmpass by remember { mutableStateOf(TextFieldValue("")) }
     var context= LocalContext.current
     Column(modifier = Modifier
-        .fillMaxSize(),
+        .fillMaxSize()
+        .verticalScroll(rememberScrollState()),
         horizontalAlignment = Alignment.CenterHorizontally) {
 
         Text(text = "Register here",

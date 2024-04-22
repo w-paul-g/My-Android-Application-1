@@ -7,13 +7,16 @@ import android.provider.MediaStore
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.gestures.scrollable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.text.KeyboardOptions
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Button
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.OutlinedTextField
@@ -45,7 +48,9 @@ import com.example.androidprojecttwo.navigation.ROUTE_VIEW_UPLOAD
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun AddProductScreen(navController: NavHostController) {
-    Column(modifier = Modifier.fillMaxSize(),
+    Column(modifier = Modifier
+        .fillMaxSize()
+        .verticalScroll(rememberScrollState()),
         horizontalAlignment = Alignment.CenterHorizontally) {
         var context = LocalContext.current
         Text(
@@ -129,7 +134,9 @@ fun ImagePicker(modifier: Modifier = Modifier, context: Context, navController: 
             Image(bitmap = bitmap.asImageBitmap(), contentDescription = "Selected image")
         }
         Column(
-            modifier = Modifier.fillMaxWidth().padding(bottom = 32.dp), horizontalAlignment = Alignment.CenterHorizontally,) {
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(bottom = 32.dp), horizontalAlignment = Alignment.CenterHorizontally,) {
             Button(
                 onClick = {
                     imagePicker.launch("image/*")
