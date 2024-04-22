@@ -44,7 +44,7 @@ import com.example.androidprojecttwo.navigation.ROUTE_VIEW_UPLOAD
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun AddProductsScreen(navController: NavHostController) {
+fun AddProductScreen(navController: NavHostController) {
     Column(modifier = Modifier.fillMaxSize(),
         horizontalAlignment = Alignment.CenterHorizontally) {
         var context = LocalContext.current
@@ -166,7 +166,7 @@ fun ImagePicker(modifier: Modifier = Modifier, context: Context, navController: 
 @Preview
 @Composable
 fun AddProductsScreenPreview() {
-    AddProductsScreen(rememberNavController())
+    AddProductScreen(rememberNavController())
 
 }
 
