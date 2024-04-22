@@ -1,7 +1,8 @@
-package com.example.androidprojecttwo.ui.theme.screens.products
+package com.example.morningmvvm.ui.theme.screens.products
 
 
 import android.content.Context
+import android.content.res.Configuration
 import android.net.Uri
 import android.provider.MediaStore
 import androidx.activity.compose.rememberLauncherForActivityResult
@@ -38,9 +39,13 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
-import com.example.androidprojecttwo.data.ProductViewModel
-import com.example.androidprojecttwo.navigation.ROUTE_VIEW_PRODUCTS
-import com.example.androidprojecttwo.navigation.ROUTE_VIEW_UPLOAD
+import com.example.morningmvvm.data.ProductViewModel
+import com.example.morningmvvm.navigation.ROUTE_HOME
+import com.example.morningmvvm.navigation.ROUTE_VIEW_PRODUCT
+import com.example.morningmvvm.navigation.ROUTE_VIEW_UPLOAD
+
+//import com.example.firebaseauth.data.productviewmodel
+//import com.example.firebaseauth.navigation.ROUTE_VIEW_PRODUCT
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -94,7 +99,7 @@ fun AddProductsScreen(navController: NavHostController) {
             val productRepository = ProductViewModel(navController,context)
             productRepository.saveProduct(productName.text.trim(),productQuantity.text.trim(),
                 productPrice.text)
-            navController.navigate(ROUTE_VIEW_PRODUCTS)
+            navController.navigate(ROUTE_VIEW_PRODUCT)
 
 
         }) {
@@ -169,4 +174,5 @@ fun AddProductsScreenPreview() {
     AddProductsScreen(rememberNavController())
 
 }
+
 
