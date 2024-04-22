@@ -31,7 +31,6 @@ import com.example.androidprojecttwo.data.ProductViewModel
 import com.example.androidprojecttwo.models.Upload
 import com.example.androidprojecttwo.navigation.ROUTE_UPDATE_PRODUCT
 
-
 @Composable
 fun ViewUploadsScreen(navController:NavHostController) {
     Column(modifier = Modifier.fillMaxSize(),
@@ -102,6 +101,7 @@ fun UploadItem(name:String, quantity:String, price:String, imageUrl:String, id:S
         }
     }
 }
+
 
 @Preview
 @Composable
