@@ -28,7 +28,8 @@ import androidx.navigation.NavController
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.example.androidprojecttwo.navigation.ROUTE_ADD_PRODUCT
-import com.example.androidprojecttwo.navigation.ROUTE_VIEW_PRODUCTS
+import com.example.androidprojecttwo.navigation.ROUTE_VIEW_PRODUCT
+//import com.example.androidprojecttwo.navigation.ROUTE_VIEW_PRODUCTS
 
 @Composable
 fun HomeScreen(navController: NavHostController){
@@ -36,26 +37,9 @@ fun HomeScreen(navController: NavHostController){
         .fillMaxWidth()
         .verticalScroll(rememberScrollState()),
         contentAlignment = Alignment.Center){
-        Column(modifier = Modifier
-            ,
+        Column(modifier = Modifier,
             verticalArrangement = Arrangement.Center) {
-//            Row(modifier = Modifier
-//                .padding(8.dp)) {
-//                HomeScreenText(homeScreenText = "HOME SCREEN",
-//                    textAlign = TextAlign.Left,
-//                    fontSize = 26.sp,
-//                    fontWeight = FontWeight.Bold,
-//                    fontStyle = FontStyle.Normal
-//                )
-//            }
-//            Row(modifier = Modifier
-//                .padding(8.dp)) {
-//                LoginButton(navController)
-//            }
-//            Row(modifier = Modifier
-//                .padding(8.dp)) {
-//                SignUpButton(navController)
-//            }
+
             Row(modifier = Modifier
                 .fillMaxWidth(1f)
                 .padding(8.dp)) {
@@ -66,6 +50,13 @@ fun HomeScreen(navController: NavHostController){
                 ) {
                     AddProductsButton(navController)
                 }
+            }
+            Row(modifier = Modifier
+                .padding(8.dp)) {
+                AboutButton(navController)
+            }
+            Row(modifier = Modifier
+                .padding(8.dp)) {
                 Box(
                     modifier = Modifier
                         .fillMaxWidth(),
@@ -73,80 +64,11 @@ fun HomeScreen(navController: NavHostController){
                 ) {
                     ViewProductsButton(navController)
                 }
-
-            }
-//            Row(modifier = Modifier
-//                .padding(8.dp)) {
-//            }
-//            Row(modifier = Modifier
-//                .padding(8.dp)) {
-//                UpdateProductsButton(navController)
-//            }
-
-            Row(modifier = Modifier
-                .padding(8.dp)) {
-                AboutButton(navController)
             }
         }
     }
 }
 
-//
-//@Composable
-//fun HomeScreenText(homeScreenText:String,
-//                   textAlign: TextAlign,
-//                   fontSize: TextUnit,
-//                   fontWeight: FontWeight,
-//                   fontStyle: FontStyle){
-//    Text(text = homeScreenText,
-//        textAlign = textAlign,
-//        fontSize = fontSize,
-//        fontWeight = fontWeight,
-//        fontStyle = fontStyle,
-//        modifier = Modifier
-//            .fillMaxWidth()
-//            .padding(2.dp)
-//    )
-//}
-//@Composable
-//fun LoginButton(navController: NavController) {
-//    Button(onClick = {
-//        navController.navigate(ROUTE_LOGIN)
-//    },
-//        modifier = Modifier
-//            .fillMaxWidth()
-//            .padding(4.dp)) {
-//        Text(text = "SIGN IN",
-//            modifier = Modifier
-//                .padding(4.dp))
-//    }
-//}
-//@Composable
-//fun SignUpButton(navController: NavController) {
-//    Button(onClick = {
-//        navController.navigate(ROUTE_LOGIN)
-//    },
-//        modifier = Modifier
-//            .fillMaxWidth()
-//            .padding(4.dp)) {
-//        Text(text = "SIGN UP",
-//            modifier = Modifier
-//                .padding(4.dp))
-//    }
-//}
-//@Composable
-//fun AboutButton(navController: NavController) {
-//    Button(onClick = {
-//        navController.navigate(ROUTE_ABOUT)
-//    },
-//        modifier = Modifier
-//            .fillMaxWidth()
-//            .padding(4.dp)) {
-//        Text(text = "ABOUT US",
-//            modifier = Modifier
-//                .padding(4.dp))
-//    }
-//}
 @Composable
 fun AddProductsButton(navController: NavController) {
     Button(onClick = {
@@ -164,35 +86,23 @@ fun AddProductsButton(navController: NavController) {
 
     }
 }
-//@Composable
-//fun UpdateProductsButton(navController: NavController) {
-//    Button(onClick = {
-//        navController.navigate(ROUTE_UPDATE_PRODUCT)
-//    },
-//        modifier = Modifier
-//            .fillMaxWidth()
-//            .padding(4.dp)) {
-//        Text(text = "UPDATE PRODUCTS",
-//            modifier = Modifier
-//                .padding(4.dp))
-//    }
-//}
+
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun ViewProductsButton(navController: NavHostController) {
-    Card(onClick = { navController.navigate(ROUTE_VIEW_PRODUCTS) },
-        modifier = Modifier
-            .padding(0.dp)
-            .background(Color.Transparent),
-        shape = RoundedCornerShape(4.dp)
-       ) {
-        Text(text = "PRODUCTS",
-            textAlign = TextAlign.Center,
-            modifier = Modifier
-                .padding(0.dp))
-    }
+//    Card(onClick = { navController.navigate(ROUTE_VIEW_PRODUCT) },
+//        modifier = Modifier
+//            .padding(0.dp)
+//            .background(Color.Transparent),
+//        shape = RoundedCornerShape(4.dp)
+//       ) {
+//        Text(text = "PRODUCTS",
+//            textAlign = TextAlign.Center,
+//            modifier = Modifier
+//                .padding(0.dp))
+//    }
     Button(onClick = {
-        navController.navigate(ROUTE_VIEW_PRODUCTS)
+        navController.navigate(ROUTE_VIEW_PRODUCT)
     },modifier = Modifier.fillMaxWidth()) {
         Text(text = "View Product")
     }

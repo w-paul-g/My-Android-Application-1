@@ -49,7 +49,7 @@ fun AppNavHost(
         composable(ROUTE_ADD_PRODUCT){
             AddProductScreen(navController)
         }
-        composable(ROUTE_VIEW_PRODUCTS){
+        composable(ROUTE_VIEW_PRODUCT){
             ViewProductScreen(navController)
         }
         composable(ROUTE_UPDATE_PRODUCT + "/{id}"){

@@ -35,7 +35,7 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.example.androidprojecttwo.data.ProductViewModel
 import com.example.androidprojecttwo.models.Product
-import com.example.androidprojecttwo.navigation.ROUTE_VIEW_PRODUCTS
+import com.example.androidprojecttwo.navigation.ROUTE_VIEW_PRODUCT
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
@@ -117,7 +117,7 @@ fun UpdateProductScreen(
                 var productRepository = ProductViewModel(navController, context)
                 productRepository.updateProduct(productName.text.trim(),productQuantity.text.trim(),
                     productPrice.text.trim(),id)
-                navController.navigate(ROUTE_VIEW_PRODUCTS)
+                navController.navigate(ROUTE_VIEW_PRODUCT)
 
 
             }) {

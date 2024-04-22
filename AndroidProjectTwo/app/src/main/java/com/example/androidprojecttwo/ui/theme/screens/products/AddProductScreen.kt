@@ -42,7 +42,7 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.example.androidprojecttwo.data.ProductViewModel
-import com.example.androidprojecttwo.navigation.ROUTE_VIEW_PRODUCTS
+import com.example.androidprojecttwo.navigation.ROUTE_VIEW_PRODUCT
 import com.example.androidprojecttwo.navigation.ROUTE_VIEW_UPLOAD
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -99,7 +99,7 @@ fun AddProductScreen(navController: NavHostController) {
             val productRepository = ProductViewModel(navController,context)
             productRepository.saveProduct(productName.text.trim(),productQuantity.text.trim(),
                 productPrice.text)
-            navController.navigate(ROUTE_VIEW_PRODUCTS)
+            navController.navigate(ROUTE_VIEW_PRODUCT)
 
 
         }) {
