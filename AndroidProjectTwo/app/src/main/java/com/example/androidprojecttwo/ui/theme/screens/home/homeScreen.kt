@@ -25,12 +25,13 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
+import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.example.androidprojecttwo.navigation.ROUTE_ADD_PRODUCT
 import com.example.androidprojecttwo.navigation.ROUTE_VIEW_PRODUCTS
 
 @Composable
-fun HomeScreen(navController: NavController){
+fun HomeScreen(navController: NavHostController){
     Box(modifier = Modifier
         .fillMaxWidth()
         .verticalScroll(rememberScrollState()),
@@ -178,10 +179,8 @@ fun AddProductsButton(navController: NavController) {
 //}
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun ViewProductsButton(navController: NavController) {
-    Card(onClick = {
-        navController.navigate(ROUTE_VIEW_PRODUCTS)
-    },
+fun ViewProductsButton(navController: NavHostController) {
+    Card(onClick = { navController.navigate(ROUTE_VIEW_PRODUCTS) },
         modifier = Modifier
             .padding(0.dp)
             .background(Color.Transparent),
@@ -191,6 +190,11 @@ fun ViewProductsButton(navController: NavController) {
             textAlign = TextAlign.Center,
             modifier = Modifier
                 .padding(0.dp))
+    }
+    Button(onClick = {
+        navController.navigate(ROUTE_VIEW_PRODUCTS)
+    },modifier = Modifier.fillMaxWidth()) {
+        Text(text = "View Product")
     }
 }
 
